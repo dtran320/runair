@@ -1,3 +1,5 @@
+import os
+
 # See .env.example for required environment variables
 from dotenv import load_dotenv
 
