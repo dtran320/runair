@@ -118,7 +118,7 @@ def add_number_for_areas(number, areas):
         print("Added {} for area {}".format(number, area))
     send_runair_sms(
         number,
-        "You're all set to receive an alert when the AQI drops below {} for the following areas:\n{}".format(
+        "Welcome to Runair 🟢🏃🏻‍♀️! You're all set to receive an alert when the AQI drops below {} for the following areas:\n{}".format(
         ACCEPTABLE_AQI,
         '\n'.join(areas)
     ))
