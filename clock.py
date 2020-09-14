@@ -3,7 +3,7 @@ from apscheduler.schedulers.blocking import BlockingScheduler
 from rq import Queue
 from worker import conn
 
-from poll_air_and_notify import poll_air_and_notify
+from runair.poll_air_and_notify import poll_air_and_notify
 
 NOTIFICATIION_GRANULARITY_MIN = 5
 

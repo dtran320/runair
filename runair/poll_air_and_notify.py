@@ -55,7 +55,7 @@ try:
     ACCEPTABLE_AQI = int(os.getenv("ACCEPTABLE_AQI", 100))
 except ValueError:
     ACCEPTABLE_AQI = 100
-    
+
 NOTIFICATION_INTERVAL_S = 60 * 60 * 24
 
 
@@ -138,7 +138,10 @@ def poll_air_and_notify():
         print("Average AQI for {}: {}".format(area_name, avg_aqi))
         if avg_aqi < ACCEPTABLE_AQI:
             now_timestamp = int(time.time())
-            last_notified = int(redis_client.get('{}:last-notified'.format(area_name)))
+            try:
+                last_notified = int(redis_client.get('{}:last-notified'.format(area_name)))
+            except (TypeError, ValueError):
+                last_notified = None
             if not last_notified or last_notified < now_timestamp - NOTIFICATION_INTERVAL_S:
                 purple_link = area['link'].format(sensor_id)
                 success_str = "AQI at {} is now {}! Please still exercise caution!\n{}\n{}".format(
