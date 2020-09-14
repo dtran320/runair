@@ -86,6 +86,20 @@ AREAS = {
         'numbers': redis_client.smembers("SOMA"),
         'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#12.19/37.75304/-122.45169',
     },
+    'Mt. Ashland': {
+        'sensors': [
+            '30773', # Mt. Ashland
+        ],
+        'numbers': redis_client.smembers("Mt. Ashland"),
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#11.09/42.1427/-122.681',
+    },
+     'Siskiyou Blvd': {
+        'sensors': [
+            '36263', # GSI Office/ Siskiyou Blvd Ashland
+        ],
+        'numbers': redis_client.smembers("Siskiyou Blvd"),
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#11.09/42.1427/-122.681',
+    },
 
 }
 
