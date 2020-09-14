@@ -196,7 +196,7 @@ def add_number_for_areas(number, areas):
         print("Added {} for area {}".format(number, area))
     send_runair_sms(
         number,
-        "Welcome to Runair 🟢🏃🏻‍♀️! You're all set to receive an alert when the AQI drops below {} (according to AQandU conversion for the following areas:\n{}".format(
+        "Welcome to Runair 🟢🏃🏻‍♀️! You're all set to receive an alert when the AQI drops below {} (according to AQandU conversion) for the following areas:\n{}".format(
         ACCEPTABLE_AQI,
         '\n'.join(areas)
     ))
@@ -257,8 +257,8 @@ def poll_air_and_notify():
                 last_notified = None
             if not last_notified or last_notified < now_timestamp - NOTIFICATION_INTERVAL_S:
                 purple_link = area['link'].format(sensor_id)
-                success_str = "AQI at {} is now {} (AQandU), 10-min avg: {}! Please still exercise caution!\n{}\n{}".format(
-                    area_name, avg_aqi, avg_aqi_10m, '\n '.join(['{}: {} (10-min avg: {})'.format(name, val, area_aqis_10m.get(name, val)) for name, val in area_aqis.items()]),
+                success_str = "AQI at {} is now {} {}(AQandU), 10-min avg: {}! Please still exercise caution!\n{}\n{}".format(
+                    area_name, avg_aqi, "💚" if avg_aqi <= 50 else "💛", avg_aqi_10m, '\n '.join(['{}: {} (10-min avg: {})'.format(name, val, area_aqis_10m.get(name, val)) for name, val in area_aqis.items()]),
                     purple_link)
                 print(success_str)
                 last_notified_dt = datetime.datetime.fromtimestamp(now_timestamp)
