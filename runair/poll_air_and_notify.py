@@ -20,24 +20,29 @@ app.config['REDIS_URL'] = os.getenv("REDIS_URL")
 redis_client = FlaskRedis(app, decode_responses=True)
 
 
+# TODO 2020-09-14: Move this to json file, Postgres or Redis depending on how we want to accept input from users
 AREAS = {
-    'Tam': {
+    'Menlo Park': {
         'sensors': [
-            56245, # Green Gulch Farm
-            20505, # Tam Valley
-            63229, # Tamalpais Ave Middle Ridge
+            '66025', # Downtown Menlo Park @ University & Florence
+            '19391', # Menlo Atherton
         ],
-        'numbers': redis_client.smembers("Tam"),
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#12.33/37.87731/-122.55398',
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a1440/cC1&select={}#13.61/37.45215/-122.17725',
     },
-    'Presidio': {
+    'Dogpatch': {
         'sensors': [
-            54129, # El Polin Springs
-            33633, # 3031 Pacific
-            62393, # 11th & Lake
-            52819, # 1st and Balboa
+            '64777', # Dogpatch
+            '35433', # Dogpatch Digs
+            '38745', # Dogpatch2
         ],
-        'numbers': redis_client.smembers("Presidio"),
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#12.19/37.75304/-122.45169',
+    },
+    'SOMA': {
+        'sensors': [
+            '24223', # South Beach Marina Apts
+            '60019', # Heron's Nest
+            '2910', # Tactrix rooftop
+        ],
         'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#12.19/37.75304/-122.45169',
     },
     'Golden Gate Park': {
@@ -46,7 +51,6 @@ AREAS = {
             19159, # Outer Sunset
             17763, # MUD Upper Haight
         ],
-        'numbers': redis_client.smembers("Golden Gate Park"),
         'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#12.19/37.75304/-122.45169',
     },
     'Ocean Beach': {
@@ -56,7 +60,6 @@ AREAS = {
             55933, # Outer Sunset 46th @ Judah/Kirkham
             17787, # Outer Sunset Vincente
         ],
-        'numbers': redis_client.smembers("Ocean Beach"),
         'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#12.19/37.75304/-122.45169',
     },
     'Twin Peaks': {
@@ -65,42 +68,74 @@ AREAS = {
             '20989', # 25th & Grandview
             '65259', # Midtown Terrace
         ],
-        'numbers': redis_client.smembers("Twin Peaks"),
         'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#12.19/37.75304/-122.45169',
     },
-    'Dogpatch': {
+    'Marina': {
         'sensors': [
-            '64777', # Dogpatch
-            '35433', # Dogpatch Digs
-            '38745', # Dogpatch2
+            '6014', # Marina Distract SF
+            '61185', # Cow Hollow
         ],
-        'numbers': redis_client.smembers("Dogpatch"),
         'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#12.19/37.75304/-122.45169',
     },
-    'SOMA': {
+    'Presidio': {
         'sensors': [
-            '24223', # South Beach Marina Apts
-            '60019', # Heron's Nest
-            '2910', # Tactrix rooftop
+            54129, # El Polin Springs
+            33633, # 3031 Pacific
+            62393, # 11th & Lake
+            52819, # 1st and Balboa
         ],
-        'numbers': redis_client.smembers("SOMA"),
         'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#12.19/37.75304/-122.45169',
     },
-    'Mt. Ashland': {
+    'Tam': {
+        'sensors': [
+            56245, # Green Gulch Farm
+            20505, # Tam Valley
+            63229, # Tamalpais Ave Middle Ridge
+        ],
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#12.33/37.87731/-122.55398',
+    },
+    'San Anselmo': {
+        'sensors': [
+            '9834', # Redhill South
+            '3840', # San Anselmo
+        ],
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#13.01/37.95782/-122.57136',
+    },
+    'San Rafael': {
+        'sensors': [
+            '53325', # San Rafael
+            '64475', #Newhall Drive
+            '66447', # 1945 5th SR
+        ],
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#13.01/37.98143/-122.50923',
+    },
+    'Ross': {
+        'sensors': [
+            '27229', # Ross
+            '63153', # B & R
+        ],
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#13.3/37.97159/-122.55834'
+    },
+    'Novato': {
+        'sensors': [
+            '55335', # Miss Sandie's School
+            '4788', # The Vistas
+            '66347', # San Marin East
+        ],
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#12.8/38.08897/-122.57811'
+    },
+     'Mt. Ashland': {
         'sensors': [
             '30773', # Mt. Ashland
         ],
-        'numbers': redis_client.smembers("Mt. Ashland"),
         'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#11.09/42.1427/-122.681',
     },
      'Siskiyou Blvd': {
         'sensors': [
             '36263', # GSI Office/ Siskiyou Blvd Ashland
         ],
-        'numbers': redis_client.smembers("Siskiyou Blvd"),
         'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#11.09/42.1427/-122.681',
     },
-
 }
 
 try:
