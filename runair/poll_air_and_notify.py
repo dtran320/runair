@@ -101,6 +101,21 @@ def to_aqandu(val):
     return .778 * val + 2.65
 
 
+def add_number_for_areas(number, areas):
+    for area in areas:
+        if area not in AREAS:
+            print("Bad area: {}".format(area))
+        redis_client.sadd(area, number)
+        print("Added {} for area {}".format(number, area))
+    send_runair_sms(
+        number,
+        "You're all set to receive an alert when the AQI drops below {} for the following areas:\n{}".format(
+        ACCEPTABLE_AQI,
+        '\n'.join(areas)
+    ))
+
+
+
 def poll_air_and_notify():
     for area_name, area in AREAS.items():
         sensor_ids = area['sensors']
