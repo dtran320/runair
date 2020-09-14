@@ -58,7 +58,35 @@ AREAS = {
         ],
         'numbers': redis_client.smembers("Ocean Beach"),
         'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#12.19/37.75304/-122.45169',
-    }
+    },
+    'Twin Peaks': {
+        'sensors': [
+            '54407', # Karl,
+            '20989', # 25th & Grandview
+            '65259', # Midtown Terrace
+        ],
+        'numbers': redis_client.smembers("Twin Peaks"),
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#12.19/37.75304/-122.45169',
+    },
+    'Dogpatch': {
+        'sensors': [
+            '64777', # Dogpatch
+            '35433', # Dogpatch Digs
+            '38745', # Dogpatch2
+        ],
+        'numbers': redis_client.smembers("Dogpatch"),
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#12.19/37.75304/-122.45169',
+    },
+    'SOMA': {
+        'sensors': [
+            '24223', # South Beach Marina Apts
+            '60019', # Heron's Nest
+            '2910', # Tactrix rooftop
+        ],
+        'numbers': redis_client.smembers("SOMA"),
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#12.19/37.75304/-122.45169',
+    },
+
 }
 
 try:
