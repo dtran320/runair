@@ -5,7 +5,7 @@ from worker import conn
 
 from poll_air_and_notify import poll_air_and_notify
 
-NOTIFICATIION_GRANULARITY_MIN = 1
+NOTIFICATIION_GRANULARITY_MIN = 5
 
 q = Queue(connection=conn)
 
