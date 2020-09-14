@@ -25,7 +25,7 @@ AREAS = {
         'sensors': [
             56245, # Green Gulch Farm
             20505, # Tam Valley
-            61629, # Tam Valley
+            63229, # Tamalpais Ave Middle Ridge
         ],
         'numbers': redis_client.smembers("Tam"),
         'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#12.33/37.87731/-122.55398',
@@ -44,9 +44,18 @@ AREAS = {
         'sensors': [
             38825, # Fulton and 12th St
             19159, # Outer Sunset
-            55933, # Outer Sunset 46th @ Judah/Kirkham
+            17763, # MUD Upper Haight
         ],
         'numbers': redis_client.smembers("Golden Gate Park"),
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#12.19/37.75304/-122.45169',
+    },
+    'Ocean Beach': {
+        'sensors': [
+            19159, # Outer Sunset
+            55933, # Outer Sunset 46th @ Judah/Kirkham
+            17787, # Outer Sunset Vincente
+        ],
+        'numbers': redis_client.smembers("Ocean Beach"),
         'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#12.19/37.75304/-122.45169',
     }
 }
