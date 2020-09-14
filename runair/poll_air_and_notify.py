@@ -51,7 +51,8 @@ AREAS = {
     },
     'Ocean Beach': {
         'sensors': [
-            19159, # Outer Sunset
+            1742, # Outer Sunset - Ocean Beach at Kirkham
+            56461, # 38th and Kirkham
             55933, # Outer Sunset 46th @ Judah/Kirkham
             17787, # Outer Sunset Vincente
         ],
@@ -129,13 +130,15 @@ def poll_air_and_notify():
         sensor_ids = area['sensors']
         notify_numbers = redis_client.smembers(area_name)
         area_aqis = {}
+        area_aqis_10m = {}
         for sensor_id in sensor_ids:
             url_to_poll = "https://www.purpleair.com/json?show={}".format(sensor_id)
             resp = requests.get(url_to_poll)
             if resp.status_code != 200:
-                print("Couldn't get AQI info from Purple for sensor".format(sensor_id))
+                print("Couldn't get AQI info from Purple for sensor {}".format(sensor_id))
                 continue
             avg_pms = []
+            avg_pms_10m = []
             result_json = resp.json()
             results = result_json['results']
             labels = []
@@ -146,19 +149,29 @@ def poll_air_and_notify():
                 if 'PM2_5Value' in r:
                     avg_pms.append(float(r['PM2_5Value']))
                     labels.append(r['Label'])
-                    print("Adding PM2.5 reading from {}: {}".format(r['Label'], r['PM2_5Value']))
+                    try:
+                        avg_10m = json.loads(r['Stats'])['v1']
+                    except:
+                        avg_10m = r['PM2_5Value']
+                    avg_pms_10m.append(float(avg_10m))
+                    print("Adding PM2.5 reading from {}: {}, 10-min avg: {}".format(r['Label'], r['PM2_5Value'], avg_10m))
             avg_pm = sum(avg_pms) / len(avg_pms)
+            avg_pm_10m = sum(avg_pms_10m) / len(avg_pms_10m)
             print("Average PM2.5 of {}: {:2f}".format(', '.join(['{:2f}'.format(a) for a in avg_pms]), avg_pm))
             aqi = int((calculate_aqi(to_aqandu(avg_pm))))
+            aqi_10m = int((calculate_aqi(to_aqandu(avg_pm_10m))))
             try:
                 location_label = labels[0]
             except:
                 location_label = "Sensor {}".format(sensor_id)
-            print("AQandU from {}: {}".format(location_label, aqi))
+            print("AQandU from {}: {} (10-min avg: {})".format(location_label, aqi, aqi_10m))
             area_aqis[location_label] = aqi
+            area_aqis_10m[location_label] = aqi_10m
         area_aqis_vals = area_aqis.values()
+        area_aqis_10m_vals = area_aqis_10m.values()
         avg_aqi = int(sum(area_aqis_vals)/len(area_aqis_vals))
-        print("Average AQI for {}: {}".format(area_name, avg_aqi))
+        avg_aqi_10m = int(sum(area_aqis_10m_vals)/len(area_aqis_10m_vals))
+        print("Average AQI for {}: {} (10-min avg: {})".format(area_name, avg_aqi, avg_aqi_10m))
         if avg_aqi < ACCEPTABLE_AQI:
             now_timestamp = int(time.time())
             try:
@@ -167,8 +180,8 @@ def poll_air_and_notify():
                 last_notified = None
             if not last_notified or last_notified < now_timestamp - NOTIFICATION_INTERVAL_S:
                 purple_link = area['link'].format(sensor_id)
-                success_str = "AQI at {} is now {} (AQandU RIGHT at this moment)! Please still exercise caution—maybe give it a few min to see how the 10-min average changes!\n{}\n{}".format(
-                    area_name, aqi, '\n '.join(['{}: {}'.format(name, val) for name, val in area_aqis.items()]),
+                success_str = "AQI at {} is now {} (AQandU), 10-min avg: {}! Please still exercise caution!\n{}\n{}".format(
+                    area_name, avg_aqi, avg_aqi_10m, '\n '.join(['{}: {} (10-min avg: {})'.format(name, val, area_aqis_10m.get(name, val)) for name, val in area_aqis.items()]),
                     purple_link)
                 print(success_str)
                 last_notified_dt = datetime.datetime.fromtimestamp(now_timestamp)
