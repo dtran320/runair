@@ -15,7 +15,7 @@ sched = BlockingScheduler()
 @sched.scheduled_job('interval', minutes=NOTIFICATIION_GRANULARITY_MIN)
 def timed_job():
     print('This job is run every {} minutes.'.format(NOTIFICATIION_GRANULARITY_MIN))
-    result = q.enqueue(poll_air_and_notify, False)
+    result = q.enqueue(poll_air_and_notify)
     print(result)
 
 
