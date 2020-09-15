@@ -200,6 +200,7 @@ def pm_to_aqi(pm_val, pm_low, pm_high, aqi_low, aqi_high):
     return (pm_val - pm_low) * scale_factor + aqi_low
 
 
+# TODO 2020-09-15 Add some tests for this using known values
 # See https://github.com/skalnik/aqi-wtf/blob/450ffb9163f840e101ee50e8ec7f658f99e5712a/app.js#L233
 def calculate_aqi(pm):
     """PM2.5 reading to AQI via The AQI equation https://forum.airnowtech.org/t/the-aqi-equation/169"""
@@ -275,6 +276,7 @@ def poll_air_and_notify():
         avg_aqi = int(sum(area_aqis_vals)/len(area_aqis_vals))
         avg_aqi_10m = int(sum(area_aqis_10m_vals)/len(area_aqis_10m_vals))
         print("Average AQI for {}: {} (10-min avg: {})".format(area_name, avg_aqi, avg_aqi_10m))
+        # TODO 2020-09-15: DRY - Refactor this copy-pasta
         if avg_aqi < GOOD_AQI:
             now_timestamp = int(time.time())
             try:
