@@ -24,115 +24,137 @@ redis_client = FlaskRedis(app, decode_responses=True)
 AREAS = {
     'Menlo Park': {
         'sensors': [
-            '66025', # Downtown Menlo Park @ University & Florence
-            '19391', # Menlo Atherton
+            '66025',  # Downtown Menlo Park @ University & Florence
+            '19391',  # Menlo Atherton
         ],
         'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a1440/cC1&select={}#13.61/37.45215/-122.17725',
     },
+    'East Alameda': {
+        'sensors': [
+            '61609',  # Bayview
+            '60025',  # Alameda G's Lab
+            '64067',  # Ravenscove
+        ],
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#13.84/37.75869/-122.24729'
+    },
+    'West Alameda': {
+        'sensors': [
+            '61423',  # Ballena Bay
+            '36653',  # BBYC Ballena Bay Yacht Club
+        ],
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#13.84/37.76359/-122.28393'
+    },
     'Dogpatch': {
         'sensors': [
-            '64777', # Dogpatch
-            '35433', # Dogpatch Digs
-            '38745', # Dogpatch2
+            '64777',  # Dogpatch
+            '35433',  # Dogpatch Digs
+            '38745',  # Dogpatch2
         ],
         'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#12.19/37.75304/-122.45169',
     },
     'SOMA': {
         'sensors': [
-            '24223', # South Beach Marina Apts
-            '60019', # Heron's Nest
-            '2910', # Tactrix rooftop
+            '24223',  # South Beach Marina Apts
+            '60019',  # Heron's Nest
+            '2910',  # Tactrix rooftop
+        ],
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#12.19/37.75304/-122.45169',
+    },
+    'Panhandle': {
+        'sensors': [
+            '17951',  # Lyon St Outside
+            '22989',  # Lyon and page
         ],
         'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#12.19/37.75304/-122.45169',
     },
     'Golden Gate Park': {
         'sensors': [
-            38825, # Fulton and 12th St
-            19159, # Outer Sunset
-            17763, # MUD Upper Haight
+            38825,  # Fulton and 12th St
+            19159,  # Outer Sunset
+            17763,  # MUD Upper Haight
         ],
         'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#12.19/37.75304/-122.45169',
     },
     'Ocean Beach': {
         'sensors': [
-            1742, # Outer Sunset - Ocean Beach at Kirkham
-            56461, # 38th and Kirkham
-            55933, # Outer Sunset 46th @ Judah/Kirkham
-            17787, # Outer Sunset Vincente
+            1742,  # Outer Sunset - Ocean Beach at Kirkham
+            56461,  # 38th and Kirkham
+            55933,  # Outer Sunset 46th @ Judah/Kirkham
+            17787,  # Outer Sunset Vincente
         ],
         'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#12.19/37.75304/-122.45169',
     },
     'Twin Peaks': {
         'sensors': [
-            '54407', # Karl,
-            '20989', # 25th & Grandview
-            '65259', # Midtown Terrace
+            '54407',  # Karl,
+            '20989',  # 25th & Grandview
+            '65259',  # Midtown Terrace
         ],
         'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#12.19/37.75304/-122.45169',
     },
     'Marina': {
         'sensors': [
-            '6014', # Marina Distract SF
-            '61185', # Cow Hollow
+            '6014',  # Marina Distract SF
+            '61185',  # Cow Hollow
         ],
         'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#12.19/37.75304/-122.45169',
     },
     'Presidio': {
         'sensors': [
-            54129, # El Polin Springs
-            33633, # 3031 Pacific
-            62393, # 11th & Lake
-            52819, # 1st and Balboa
+            54129,  # El Polin Springs
+            33633,  # 3031 Pacific
+            62393,  # 11th & Lake
+            52819,  # 1st and Balboa
         ],
         'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#12.19/37.75304/-122.45169',
     },
     'Tam': {
         'sensors': [
-            56245, # Green Gulch Farm
-            20505, # Tam Valley
-            63229, # Tamalpais Ave Middle Ridge
+            56245,  # Green Gulch Farm
+            20505,  # Tam Valley
+            63229,  # Tamalpais Ave Middle Ridge
         ],
         'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#12.33/37.87731/-122.55398',
     },
     'San Anselmo': {
         'sensors': [
-            '9834', # Redhill South
-            '3840', # San Anselmo
+            '9834',  # Redhill South
+            '3840',  # San Anselmo
         ],
         'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#13.01/37.95782/-122.57136',
     },
     'San Rafael': {
         'sensors': [
-            '53325', # San Rafael
-            '64475', #Newhall Drive
-            '66447', # 1945 5th SR
+            '53325',  # San Rafael
+            '64475',  #Newhall Drive
+            '66447',  # 1945 5th SR
         ],
         'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#13.01/37.98143/-122.50923',
     },
     'Ross': {
         'sensors': [
-            '27229', # Ross
-            '63153', # B & R
+            '27229',  # Ross
+            '63153',  # B & R
         ],
         'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#13.3/37.97159/-122.55834'
     },
     'Novato': {
         'sensors': [
-            '55335', # Miss Sandie's School
-            '4788', # The Vistas
-            '66347', # San Marin East
+            '55335',  # Miss Sandie's School
+            '4788',  # The Vistas
+            '66347',  # San Marin East
         ],
         'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#12.8/38.08897/-122.57811'
     },
-     'Mt. Ashland': {
+    'Mt. Ashland': {
         'sensors': [
-            '30773', # Mt. Ashland
+            '30773',  # Mt. Ashland
         ],
         'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#11.09/42.1427/-122.681',
     },
-     'Siskiyou Blvd': {
+    'Siskiyou Blvd': {
         'sensors': [
-            '36263', # GSI Office/ Siskiyou Blvd Ashland
+            '36263',  # GSI Office/ Siskiyou Blvd Ashland
         ],
         'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#11.09/42.1427/-122.681',
     },
@@ -142,6 +164,11 @@ try:
     ACCEPTABLE_AQI = int(os.getenv("ACCEPTABLE_AQI", 100))
 except ValueError:
     ACCEPTABLE_AQI = 100
+
+try:
+    GOOD_AQI = int(os.getenv("GOOD_AQI", 50))
+except ValueError:
+    GOOD_AQI = 50
 
 NOTIFICATION_INTERVAL_S = 60 * 60 * 24
 
@@ -196,9 +223,8 @@ def add_number_for_areas(number, areas):
         print("Added {} for area {}".format(number, area))
     send_runair_sms(
         number,
-        "Welcome to Runair 🟢🏃🏻‍♀️! You're all set to receive an alert when the AQI drops below {} (according to AQandU conversion) for the following areas:\n{}".format(
-        ACCEPTABLE_AQI,
-        '\n'.join(areas)
+        "Welcome to Runair 🟢🏃🏻‍♀️! You're all set to receive alerts the first time the AQI drops below {}💛 and {}💚 each 24-hour period (according to AQandU conversion, powered by PurpleAir) for the following areas:\n{}".format(
+            ACCEPTABLE_AQI, GOOD_AQI, '\n'.join(areas)
     ))
 
 
@@ -249,7 +275,29 @@ def poll_air_and_notify():
         avg_aqi = int(sum(area_aqis_vals)/len(area_aqis_vals))
         avg_aqi_10m = int(sum(area_aqis_10m_vals)/len(area_aqis_10m_vals))
         print("Average AQI for {}: {} (10-min avg: {})".format(area_name, avg_aqi, avg_aqi_10m))
-        if avg_aqi < ACCEPTABLE_AQI:
+        if avg_aqi < GOOD_AQI:
+            now_timestamp = int(time.time())
+            try:
+                last_notified = int(redis_client.get('{}:last-notified-good'.format(area_name)))
+            except (TypeError, ValueError):
+                last_notified = None
+            if not last_notified or last_notified < now_timestamp - NOTIFICATION_INTERVAL_S:
+                purple_link = area['link'].format(sensor_id)
+                success_str = "AQI at {} is now {} 💚 (AQandU), 10-min avg: {}! Green means GOOOO 🟢 \n{}\n{}".format(
+                    area_name, avg_aqi, avg_aqi_10m, '\n '.join(['{}: {} (10-min avg: {})'.format(name, val, area_aqis_10m.get(name, val)) for name, val in area_aqis.items()]),
+                    purple_link)
+                print(success_str)
+                last_notified_dt = datetime.datetime.fromtimestamp(now_timestamp)
+                redis_client.set('{}:last-notified-good'.format(area_name), now_timestamp)
+                print("Updated last notified to {}".format(last_notified_dt.isoformat(sep=' ')))
+                for number in notify_numbers:
+                    print("Sending text to {}".format(number))
+                    send_runair_sms(number, body=success_str)
+            else:
+                last_notified_dt = datetime.datetime.fromtimestamp(last_notified)
+                print("Not notifiying for {} because we last notified at {}".format(
+                    area_name, last_notified_dt.isoformat(sep=' ')))
+        elif avg_aqi < ACCEPTABLE_AQI:
             now_timestamp = int(time.time())
             try:
                 last_notified = int(redis_client.get('{}:last-notified'.format(area_name)))
@@ -257,8 +305,8 @@ def poll_air_and_notify():
                 last_notified = None
             if not last_notified or last_notified < now_timestamp - NOTIFICATION_INTERVAL_S:
                 purple_link = area['link'].format(sensor_id)
-                success_str = "AQI at {} is now {} {}(AQandU), 10-min avg: {}! Please still exercise caution!\n{}\n{}".format(
-                    area_name, avg_aqi, "💚" if avg_aqi <= 50 else "💛", avg_aqi_10m, '\n '.join(['{}: {} (10-min avg: {})'.format(name, val, area_aqis_10m.get(name, val)) for name, val in area_aqis.items()]),
+                success_str = "AQI at {} is now {} 💛 (AQandU), 10-min avg: {}! Please still exercise caution!\n{}\n{}".format(
+                    area_name, avg_aqi, avg_aqi_10m, '\n '.join(['{}: {} (10-min avg: {})'.format(name, val, area_aqis_10m.get(name, val)) for name, val in area_aqis.items()]),
                     purple_link)
                 print(success_str)
                 last_notified_dt = datetime.datetime.fromtimestamp(now_timestamp)
