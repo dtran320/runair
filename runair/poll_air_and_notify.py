@@ -35,14 +35,22 @@ AREAS = {
             '60025',  # Alameda G's Lab
             '64067',  # Ravenscove
         ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#13.84/37.75869/-122.24729'
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#13.84/37.75869/-122.24729',
     },
     'West Alameda': {
         'sensors': [
             '61423',  # Ballena Bay
             '36653',  # BBYC Ballena Bay Yacht Club
         ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#13.84/37.76359/-122.28393'
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#13.84/37.76359/-122.28393',
+    },
+    'Acalanes Ridge': {
+        'sensors': [
+            '18755',  # Acalanes Ridge
+            '17095',  # Oakvale
+            '65815',  # Larkey/EBMUD
+        ],
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC0&select={}#14.5/37.90336/-122.08008',
     },
     'Dogpatch': {
         'sensors': [
@@ -136,7 +144,7 @@ AREAS = {
             '27229',  # Ross
             '63153',  # B & R
         ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#13.3/37.97159/-122.55834'
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#13.3/37.97159/-122.55834',
     },
     'Novato': {
         'sensors': [
@@ -144,7 +152,7 @@ AREAS = {
             '4788',  # The Vistas
             '66347',  # San Marin East
         ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#12.8/38.08897/-122.57811'
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#12.8/38.08897/-122.57811',
     },
     'Mt. Ashland': {
         'sensors': [
