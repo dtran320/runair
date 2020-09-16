@@ -294,7 +294,7 @@ def poll_air_and_notify():
             if not last_notified or last_notified < now_timestamp - NOTIFICATION_INTERVAL_S:
                 purple_link = area['link'].format(sensor_id)
                 success_str = "AQI at {} is now {} 💚 (AQandU), 10-min avg: {}! Green means GOOOO 🟢 \n{}\n{}".format(
-                    area_name, avg_aqi, avg_aqi_10m, '\n '.join(['{}: {} (10-min avg: {})'.format(name, val, area_aqis_10m.get(name, val)) for name, val in area_aqis.items()]),
+                    area_name, avg_aqi, avg_aqi_10m, '\n'.join(['{}: {} (10-min avg: {})'.format(name, val, area_aqis_10m.get(name, val)) for name, val in area_aqis.items()]),
                     purple_link)
                 print(success_str)
                 last_notified_dt = datetime.datetime.fromtimestamp(now_timestamp)
@@ -316,7 +316,7 @@ def poll_air_and_notify():
             if not last_notified or last_notified < now_timestamp - NOTIFICATION_INTERVAL_S:
                 purple_link = area['link'].format(sensor_id)
                 success_str = "AQI at {} is now {} 💛 (AQandU), 10-min avg: {}! Please still exercise caution!\n{}\n{}".format(
-                    area_name, avg_aqi, avg_aqi_10m, '\n '.join(['{}: {} (10-min avg: {})'.format(name, val, area_aqis_10m.get(name, val)) for name, val in area_aqis.items()]),
+                    area_name, avg_aqi, avg_aqi_10m, '\n'.join(['{}: {} (10-min avg: {})'.format(name, val, area_aqis_10m.get(name, val)) for name, val in area_aqis.items()]),
                     purple_link)
                 print(success_str)
                 last_notified_dt = datetime.datetime.fromtimestamp(now_timestamp)
