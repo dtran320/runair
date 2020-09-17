@@ -78,8 +78,7 @@ AREAS = {
     'Golden Gate Park': {
         'sensors': [
             38825,  # Fulton and 12th St
-            19159,  # Outer Sunset
-            17763,  # MUD Upper Haight
+            66239,  # Fulton Deck
         ],
         'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#12.19/37.75304/-122.45169',
     },
@@ -258,6 +257,7 @@ def poll_air_and_notify():
                 print("No results for sensor {}".format(sensor_id))
                 continue
             for r in results:
+                # TODO 2020-09-17 Check timestamps for offline sensors!
                 if 'PM2_5Value' in r:
                     avg_pms.append(float(r['PM2_5Value']))
                     labels.append(r['Label'])
