@@ -29,6 +29,20 @@ AREAS = {
         ],
         'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a1440/cC1&select={}#13.61/37.45215/-122.17725',
     },
+    'Lake Merritt': {
+        'sensors': [
+            '5044',  # SCAH-22
+            '60269',  # Oakland
+        ],
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#13.89/37.80296/-122.26417',
+    },
+    'Berkeley Marina': {
+        'sensors': [
+            '27359',  # Oceanview Neighborhood
+            '50933',  # Buchanan St.
+        ],
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#13.86/37.87505/-122.30909',
+    },
     'East Alameda': {
         'sensors': [
             '61609',  # Bayview
