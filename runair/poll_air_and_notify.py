@@ -252,7 +252,8 @@ def add_number_for_areas(number, areas):
         number,
         "Welcome to Runair 🟢🏃🏻‍♀️! You're all set to receive alerts the first time the AQI drops below {}💛 and {}💚 each 24-hour period (according to LRAPA conversion, powered by PurpleAir) for the following areas:\n{}".format(
             ACCEPTABLE_AQI, GOOD_AQI, '\n'.join(areas)
-    ))
+        )
+    )
 
 
 def poll_air_and_notify():
@@ -282,7 +283,8 @@ def poll_air_and_notify():
                     labels.append(r['Label'])
                     try:
                         avg_10m = json.loads(r['Stats'])['v1']
-                    except:
+                    except Exception as e:
+                        print(e)
                         avg_10m = r['PM2_5Value']
                     avg_pms_10m.append(float(avg_10m))
                     print("Adding PM2.5 reading from {}: {}, 10-min avg: {}".format(r['Label'], r['PM2_5Value'], avg_10m))
@@ -301,7 +303,7 @@ def poll_air_and_notify():
             area_aqis_10m[location_label] = aqi_10m
         area_aqis_vals = area_aqis.values()
         area_aqis_10m_vals = area_aqis_10m.values()
-        avg_aqi = int(sum(area_aqis_vals)/len(area_aqis_vals))
+        avg_aqi = int(sum(area_aqis_vals) / len(area_aqis_vals))
         avg_aqi_10m = int(sum(area_aqis_10m_vals)/len(area_aqis_10m_vals))
         print("Average AQI for {}: {} (10-min avg: {})".format(area_name, avg_aqi, avg_aqi_10m))
         # TODO 2020-09-15: DRY - Refactor this copy-pasta
