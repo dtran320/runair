@@ -237,11 +237,6 @@ def to_aqandu(val):
     return .778 * val + 2.65
 
 
-# From https://www.reddit.com/r/PurpleAir/comments/irs1j7/any_api_usage_tips_examples/
-def to_lrapa(val):
-    return 0.5 * val - 0.66
-
-
 def add_number_for_areas(number, areas):
     for area in areas:
         if area not in AREAS:
@@ -250,7 +245,7 @@ def add_number_for_areas(number, areas):
         print("Added {} for area {}".format(number, area))
     send_runair_sms(
         number,
-        "Welcome to Runair 🟢🏃🏻‍♀️! You're all set to receive alerts the first time the AQI drops below {}💛 and {}💚 each 24-hour period (according to LRAPA conversion, powered by PurpleAir) for the following areas:\n{}".format(
+        "Welcome to Runair 🟢🏃🏻‍♀️! You're all set to receive alerts the first time the AQI drops below {}💛 and {}💚 each 24-hour period (according to AQandU conversion, powered by PurpleAir) for the following areas:\n{}".format(
             ACCEPTABLE_AQI, GOOD_AQI, '\n'.join(areas)
         )
     )
@@ -291,14 +286,13 @@ def poll_air_and_notify():
             avg_pm = sum(avg_pms) / len(avg_pms)
             avg_pm_10m = sum(avg_pms_10m) / len(avg_pms_10m)
             print("Average PM2.5 of {}: {:2f}".format(', '.join(['{:2f}'.format(a) for a in avg_pms]), avg_pm))
-            aqi = int((calculate_aqi(to_lrapa(avg_pm))))
-            aqi_10m = int((calculate_aqi(to_lrapa(avg_pm_10m))))
+            aqi = int((calculate_aqi(to_aqandu(avg_pm))))
+            aqi_10m = int((calculate_aqi(to_aqandu(avg_pm_10m))))
             try:
                 location_label = labels[0]
-            except Exception as e:
-                print(e)
+            except:
                 location_label = "Sensor {}".format(sensor_id)
-            print("LRAPA from {}: {} (10-min avg: {})".format(location_label, aqi, aqi_10m))
+            print("AQandU from {}: {} (10-min avg: {})".format(location_label, aqi, aqi_10m))
             area_aqis[location_label] = aqi
             area_aqis_10m[location_label] = aqi_10m
         area_aqis_vals = area_aqis.values()
@@ -315,7 +309,7 @@ def poll_air_and_notify():
                 last_notified = None
             if not last_notified or last_notified < now_timestamp - NOTIFICATION_INTERVAL_S:
                 purple_link = area['link'].format(sensor_id)
-                success_str = "AQI at {} is now {} 💚 (LRAPA), 10-min avg: {}! Green means GOOOO 🟢 \n{}\n{}".format(
+                success_str = "AQI at {} is now {} 💚 (AQandU), 10-min avg: {}! Green means GOOOO 🟢 \n{}\n{}".format(
                     area_name, avg_aqi, avg_aqi_10m, '\n'.join(['{}: {} (10-min avg: {})'.format(name, val, area_aqis_10m.get(name, val)) for name, val in area_aqis.items()]),
                     purple_link)
                 print(success_str)
@@ -337,7 +331,7 @@ def poll_air_and_notify():
                 last_notified = None
             if not last_notified or last_notified < now_timestamp - NOTIFICATION_INTERVAL_S:
                 purple_link = area['link'].format(sensor_id)
-                success_str = "AQI at {} is now {} 💛 (LRAPA), 10-min avg: {}! Please still exercise caution!\n{}\n{}".format(
+                success_str = "AQI at {} is now {} 💛 (AQandU), 10-min avg: {}! Please still exercise caution!\n{}\n{}".format(
                     area_name, avg_aqi, avg_aqi_10m, '\n'.join(['{}: {} (10-min avg: {})'.format(name, val, area_aqis_10m.get(name, val)) for name, val in area_aqis.items()]),
                     purple_link)
                 print(success_str)
