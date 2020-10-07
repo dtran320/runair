@@ -242,6 +242,12 @@ def to_lrapa(val):
     return 0.5 * val - 0.66
 
 
+# From PurpleAir Site
+# See Paper: https://cfpub.epa.gov/si/si_public_record_report.cfm?dirEntryId=349513&Lab=CEMM&simplesearch=0&showcriteria=2&sortby=pubDate&timstype=&datebeginpublishedpresented=08/25/2018
+def to_us_epa(pm25_cf1, humidity):
+    return 0.534 * pm25_cf1 - 0.0844 * humidity + 5.604
+
+
 def add_number_for_areas(number, areas):
     for area in areas:
         if area not in AREAS:
