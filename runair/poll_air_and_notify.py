@@ -27,21 +27,21 @@ AREAS = {
             '66025',  # Downtown Menlo Park @ University & Florence
             '19391',  # Menlo Atherton
         ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a1440/cC1&select={}#13.61/37.45215/-122.17725',
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a1440/cC5&select={}#13.61/37.45215/-122.17725',
     },
     'Lake Merritt': {
         'sensors': [
             '5044',  # SCAH-22
             '60269',  # Oakland
         ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#13.89/37.80296/-122.26417',
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#13.89/37.80296/-122.26417',
     },
     'Berkeley Marina': {
         'sensors': [
             '27359',  # Oceanview Neighborhood
             '50933',  # Buchanan St.
         ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#13.86/37.87505/-122.30909',
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#13.86/37.87505/-122.30909',
     },
     'East Alameda': {
         'sensors': [
@@ -49,14 +49,14 @@ AREAS = {
             '60025',  # Alameda G's Lab
             '64067',  # Ravenscove
         ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#13.84/37.75869/-122.24729',
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#13.84/37.75869/-122.24729',
     },
     'West Alameda': {
         'sensors': [
             '61423',  # Ballena Bay
             '36653',  # BBYC Ballena Bay Yacht Club
         ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#13.84/37.76359/-122.28393',
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#13.84/37.76359/-122.28393',
     },
     'Acalanes Ridge': {
         'sensors': [
@@ -64,7 +64,7 @@ AREAS = {
             '17095',  # Oakvale
             '65815',  # Larkey/EBMUD
         ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC0&select={}#14.5/37.90336/-122.08008',
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#14.5/37.90336/-122.08008',
     },
     'Dogpatch': {
         'sensors': [
@@ -72,7 +72,7 @@ AREAS = {
             '35433',  # Dogpatch Digs
             '38745',  # Dogpatch2
         ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#12.19/37.75304/-122.45169',
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#12.19/37.75304/-122.45169',
     },
     'SOMA': {
         'sensors': [
@@ -80,21 +80,21 @@ AREAS = {
             '60019',  # Heron's Nest
             '2910',  # Tactrix rooftop
         ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#12.19/37.75304/-122.45169',
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#12.19/37.75304/-122.45169',
     },
     'Panhandle': {
         'sensors': [
             '17951',  # Lyon St Outside
             '22989',  # Lyon and page
         ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#12.19/37.75304/-122.45169',
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#12.19/37.75304/-122.45169',
     },
     'Golden Gate Park': {
         'sensors': [
             38825,  # Fulton and 12th St
             66239,  # Fulton Deck
         ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#12.19/37.75304/-122.45169',
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#12.19/37.75304/-122.45169',
     },
     'Ocean Beach': {
         'sensors': [
@@ -103,7 +103,7 @@ AREAS = {
             55933,  # Outer Sunset 46th @ Judah/Kirkham
             17787,  # Outer Sunset Vincente
         ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#12.19/37.75304/-122.45169',
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#12.19/37.75304/-122.45169',
     },
     'Twin Peaks': {
         'sensors': [
@@ -111,14 +111,14 @@ AREAS = {
             '20989',  # 25th & Grandview
             '65259',  # Midtown Terrace
         ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#12.19/37.75304/-122.45169',
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#12.19/37.75304/-122.45169',
     },
     'Marina': {
         'sensors': [
             '6014',  # Marina Distract SF
             '61185',  # Cow Hollow
         ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#12.19/37.75304/-122.45169',
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#12.19/37.75304/-122.45169',
     },
     'Presidio': {
         'sensors': [
@@ -128,7 +128,7 @@ AREAS = {
             52819,  # Balboa & 2nd
             63151,  # Matt outside
         ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#12.19/37.75304/-122.45169',
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#12.19/37.75304/-122.45169',
     },
     'Tam': {
         'sensors': [
@@ -136,14 +136,14 @@ AREAS = {
             20505,  # Tam Valley
             63229,  # Tamalpais Ave Middle Ridge
         ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#12.33/37.87731/-122.55398',
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#12.33/37.87731/-122.55398',
     },
     'San Anselmo': {
         'sensors': [
             '9834',  # Redhill South
             '3840',  # San Anselmo
         ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#13.01/37.95782/-122.57136',
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#13.01/37.95782/-122.57136',
     },
     'San Rafael': {
         'sensors': [
@@ -151,33 +151,33 @@ AREAS = {
             '64475',  #Newhall Drive
             '66447',  # 1945 5th SR
         ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#13.01/37.98143/-122.50923',
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#13.01/37.98143/-122.50923',
     },
     'Ross': {
         'sensors': [
             '27229',  # Ross
             '63153',  # B & R
         ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#13.3/37.97159/-122.55834',
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#13.3/37.97159/-122.55834',
     },
     'Novato': {
         'sensors': [
             '55335',  # Miss Sandie's School
             '66347',  # San Marin East
         ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#12.8/38.08897/-122.57811',
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#12.8/38.08897/-122.57811',
     },
     'Mt. Ashland': {
         'sensors': [
             '30773',  # Mt. Ashland
         ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#11.09/42.1427/-122.681',
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#11.09/42.1427/-122.681',
     },
     'Siskiyou Blvd': {
         'sensors': [
             '36263',  # GSI Office/ Siskiyou Blvd Ashland
         ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC1&select={}#11.09/42.1427/-122.681',
+        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#11.09/42.1427/-122.681',
     },
 }
 
