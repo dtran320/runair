@@ -268,6 +268,7 @@ def poll_air_and_notify():
         notify_numbers = redis_client.smembers(area_name)
         area_aqis = {}
         for sensor_id in sensor_ids:
+            # TODO 2020-09-17 Check timestamps for offline sensors!
             url_to_poll = "https://www.purpleair.com/json?show={}".format(sensor_id)
             resp = requests.get(url_to_poll)
             if resp.status_code != 200:
@@ -279,30 +280,35 @@ def poll_air_and_notify():
             if not results:
                 print("No results for sensor {}".format(sensor_id))
                 continue
-            # TODO 2020-10-07: Double-check this?
-            # We'll just always use the first sensor since that has humidity?
-            # Slides say PA_cf1(avgAB)] =PurpleAir higher correction factor data averaged from the A and B channels
             result = results[0]
             try:
                 humidity = float(result['humidity'])
             except (IndexError, ValueError):
                 print("Couldn't get humidity for sensor {}".format(sensor_id))
                 continue
-            # TODO 2020-09-17 Check timestamps for offline sensors!
-            try:
-                pm25 = float(result['pm2_5_cf_1'])
-            except (IndexError, ValueError):
-                print("Couldn't get PM2.5 CF=1 for sensor {}".format(sensor_id))
-                continue
-            print("PM2.5 CF=1 of {}, humidity = {}".format(pm25, humidity))
-            aqi = int((calculate_aqi(to_us_epa(pm25, humidity))))
             try:
                 location_label = result['Label']
             except IndexError as e:
                 print(e)
                 location_label = "Sensor {}".format(sensor_id)
+            # TODO 2020-10-07: Double-check this?
+            # Slides say PA_cf1(avgAB)] = PurpleAir higher correction factor data averaged from the A and B channels
+            pm25s = []
+            for r in results:
+                try:
+                    pm25 = float(r['pm2_5_cf_1'])
+                except (IndexError, ValueError):
+                    print("Couldn't get PM2.5 CF=1 for sensor {}".format(sensor_id))
+                    continue
+                pm25s.append(pm25)
+                print("PM 2.5 CF=1: {:2f}, sensor {}".format(pm25, r.get('Label', 'Unknown channel')))
+            pm25 = sum(pm25s) / len(pm25s)
+            print("PM2.5 CF=1 of {:2f}, humidity = {}".format(pm25, humidity))
+            aqi = int((calculate_aqi(to_us_epa(pm25, humidity))))
+          
             print("US-EPA from {}: {}".format(location_label, aqi))
             area_aqis[location_label] = aqi
+
         area_aqis_vals = area_aqis.values()
         avg_aqi = int(sum(area_aqis_vals) / len(area_aqis_vals))
         print("Average AQI for {}: {}".format(area_name, avg_aqi))
