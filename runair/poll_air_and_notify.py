@@ -166,7 +166,6 @@ def poll_air_and_notify():
         area_aqis_vals = area_aqis.values()
         avg_aqi = int(sum(area_aqis_vals) / len(area_aqis_vals))
         print("Average AQI for {}: {}".format(area_name, avg_aqi))
-        # TODO 2020-09-15: DRY - Refactor this copy-pasta
 
         now_timestamp = int(time.time())
         for alert in ALERTS:
