@@ -1,0 +1,159 @@
+{
+    "Acalanes Ridge": {
+        "link": "https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#14.5/37.90336/-122.08008",
+        "sensors": [
+            18755,
+            17095,
+            65815
+        ]
+    },
+    "Berkeley Marina": {
+        "link": "https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#13.86/37.87505/-122.30909",
+        "sensors": [
+            27359,
+            50933
+        ]
+    },
+    "Dogpatch": {
+        "link": "https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#12.19/37.75304/-122.45169",
+        "sensors": [
+            64777,
+            35433,
+            38745
+        ]
+    },
+    "East Alameda": {
+        "link": "https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#13.84/37.75869/-122.24729",
+        "sensors": [
+            61609,
+            60025,
+            64067
+        ]
+    },
+    "Golden Gate Park": {
+        "link": "https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#12.19/37.75304/-122.45169",
+        "sensors": [
+            38825,
+            66239
+        ]
+    },
+    "Lake Merritt": {
+        "link": "https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#13.89/37.80296/-122.26417",
+        "sensors": [
+            5044,
+            60269
+        ]
+    },
+    "Marina": {
+        "link": "https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#12.19/37.75304/-122.45169",
+        "sensors": [
+            6014,
+            61185
+        ]
+    },
+    "Menlo Park": {
+        "link": "https://www.purpleair.com/map?opt=1/i/mAQI/a1440/cC5&select={}#13.61/37.45215/-122.17725",
+        "sensors": [
+            66025,
+            19391
+        ]
+    },
+    "Mt. Ashland": {
+        "link": "https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#11.09/42.1427/-122.681",
+        "sensors": [
+            30773
+        ]
+    },
+    "Novato": {
+        "link": "https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#12.8/38.08897/-122.57811",
+        "sensors": [
+            55335,
+            66347
+        ]
+    },
+    "Ocean Beach": {
+        "link": "https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#12.19/37.75304/-122.45169",
+        "sensors": [
+            1742,
+            56461,
+            55933,
+            17787
+        ]
+    },
+    "Panhandle": {
+        "link": "https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#12.19/37.75304/-122.45169",
+        "sensors": [
+            17951,
+            22989
+        ]
+    },
+    "Presidio": {
+        "link": "https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#12.19/37.75304/-122.45169",
+        "sensors": [
+            54129,
+            33633,
+            62393,
+            52819,
+            63151
+        ]
+    },
+    "Ross": {
+        "link": "https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#13.3/37.97159/-122.55834",
+        "sensors": [
+            27229,
+            63153
+        ]
+    },
+    "SOMA": {
+        "link": "https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#12.19/37.75304/-122.45169",
+        "sensors": [
+            24223,
+            60019,
+            2910
+        ]
+    },
+    "San Anselmo": {
+        "link": "https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#13.01/37.95782/-122.57136",
+        "sensors": [
+            9834,
+            3840
+        ]
+    },
+    "San Rafael": {
+        "link": "https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#13.01/37.98143/-122.50923",
+        "sensors": [
+            53325,
+            64475,
+            66447
+        ]
+    },
+    "Siskiyou Blvd": {
+        "link": "https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#11.09/42.1427/-122.681",
+        "sensors": [
+            36263
+        ]
+    },
+    "Tam": {
+        "link": "https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#12.33/37.87731/-122.55398",
+        "sensors": [
+            56245,
+            20505,
+            63229
+        ]
+    },
+    "Twin Peaks": {
+        "link": "https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#12.19/37.75304/-122.45169",
+        "sensors": [
+            54407,
+            20989,
+            65259
+        ]
+    },
+    "West Alameda": {
+        "link": "https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#13.84/37.76359/-122.28393",
+        "sensors": [
+            61423,
+            36653
+        ]
+    }
+}

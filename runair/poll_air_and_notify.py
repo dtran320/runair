@@ -20,166 +20,7 @@ app.config['REDIS_URL'] = os.getenv("REDIS_URL")
 redis_client = FlaskRedis(app, decode_responses=True)
 
 
-# TODO 2020-09-14: Move this to json file, Postgres or Redis depending on how we want to accept input from users
-AREAS = {
-    'Menlo Park': {
-        'sensors': [
-            '66025',  # Downtown Menlo Park @ University & Florence
-            '19391',  # Menlo Atherton
-        ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a1440/cC5&select={}#13.61/37.45215/-122.17725',
-    },
-    'Lake Merritt': {
-        'sensors': [
-            '5044',  # SCAH-22
-            '60269',  # Oakland
-        ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#13.89/37.80296/-122.26417',
-    },
-    'Berkeley Marina': {
-        'sensors': [
-            '27359',  # Oceanview Neighborhood
-            '50933',  # Buchanan St.
-        ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#13.86/37.87505/-122.30909',
-    },
-    'East Alameda': {
-        'sensors': [
-            '61609',  # Bayview
-            '60025',  # Alameda G's Lab
-            '64067',  # Ravenscove
-        ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#13.84/37.75869/-122.24729',
-    },
-    'West Alameda': {
-        'sensors': [
-            '61423',  # Ballena Bay
-            '36653',  # BBYC Ballena Bay Yacht Club
-        ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#13.84/37.76359/-122.28393',
-    },
-    'Acalanes Ridge': {
-        'sensors': [
-            '18755',  # Acalanes Ridge
-            '17095',  # Oakvale
-            '65815',  # Larkey/EBMUD
-        ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#14.5/37.90336/-122.08008',
-    },
-    'Dogpatch': {
-        'sensors': [
-            '64777',  # Dogpatch
-            '35433',  # Dogpatch Digs
-            '38745',  # Dogpatch2
-        ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#12.19/37.75304/-122.45169',
-    },
-    'SOMA': {
-        'sensors': [
-            '24223',  # South Beach Marina Apts
-            '60019',  # Heron's Nest
-            '2910',  # Tactrix rooftop
-        ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#12.19/37.75304/-122.45169',
-    },
-    'Panhandle': {
-        'sensors': [
-            '17951',  # Lyon St Outside
-            '22989',  # Lyon and page
-        ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#12.19/37.75304/-122.45169',
-    },
-    'Golden Gate Park': {
-        'sensors': [
-            38825,  # Fulton and 12th St
-            66239,  # Fulton Deck
-        ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#12.19/37.75304/-122.45169',
-    },
-    'Ocean Beach': {
-        'sensors': [
-            1742,  # Outer Sunset - Ocean Beach at Kirkham
-            56461,  # 38th and Kirkham
-            55933,  # Outer Sunset 46th @ Judah/Kirkham
-            17787,  # Outer Sunset Vincente
-        ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#12.19/37.75304/-122.45169',
-    },
-    'Twin Peaks': {
-        'sensors': [
-            '54407',  # Karl,
-            '20989',  # 25th & Grandview
-            '65259',  # Midtown Terrace
-        ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#12.19/37.75304/-122.45169',
-    },
-    'Marina': {
-        'sensors': [
-            '6014',  # Marina Distract SF
-            '61185',  # Cow Hollow
-        ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#12.19/37.75304/-122.45169',
-    },
-    'Presidio': {
-        'sensors': [
-            54129,  # El Polin Springs
-            33633,  # 3031 Pacific
-            62393,  # JATT outside
-            52819,  # Balboa & 2nd
-            63151,  # Matt outside
-        ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#12.19/37.75304/-122.45169',
-    },
-    'Tam': {
-        'sensors': [
-            56245,  # Green Gulch Farm
-            20505,  # Tam Valley
-            63229,  # Tamalpais Ave Middle Ridge
-        ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#12.33/37.87731/-122.55398',
-    },
-    'San Anselmo': {
-        'sensors': [
-            '9834',  # Redhill South
-            '3840',  # San Anselmo
-        ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#13.01/37.95782/-122.57136',
-    },
-    'San Rafael': {
-        'sensors': [
-            '53325',  # San Rafael
-            '64475',  #Newhall Drive
-            '66447',  # 1945 5th SR
-        ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#13.01/37.98143/-122.50923',
-    },
-    'Ross': {
-        'sensors': [
-            '27229',  # Ross
-            '63153',  # B & R
-        ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#13.3/37.97159/-122.55834',
-    },
-    'Novato': {
-        'sensors': [
-            '55335',  # Miss Sandie's School
-            '66347',  # San Marin East
-        ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#12.8/38.08897/-122.57811',
-    },
-    'Mt. Ashland': {
-        'sensors': [
-            '30773',  # Mt. Ashland
-        ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#11.09/42.1427/-122.681',
-    },
-    'Siskiyou Blvd': {
-        'sensors': [
-            '36263',  # GSI Office/ Siskiyou Blvd Ashland
-        ],
-        'link': 'https://www.purpleair.com/map?opt=1/i/mAQI/a10/cC5&select={}#11.09/42.1427/-122.681',
-    },
-}
+AREAS = json.load(open("data/areas.json"))
 
 try:
     ACCEPTABLE_AQI = int(os.getenv("ACCEPTABLE_AQI", 100))
@@ -192,6 +33,19 @@ except ValueError:
     GOOD_AQI = 50
 
 NOTIFICATION_INTERVAL_S = 60 * 60 * 24
+
+ALERTS = [
+    {
+        'threshold': GOOD_AQI,
+        'key': 'last-notified-good',
+        'message': "AQI at {} is now {} 💚 (US EPA)! Green means GOOOO 🟢 \n{}\n{}",
+    },
+    {
+        'threshold': ACCEPTABLE_AQI,
+        'key': 'last-notified',
+        'message': "AQI at {} is now {} 💛 (US EPA)! Please still exercise caution!\n{}\n{}",
+    },
+]
 
 
 # From Purple
@@ -313,48 +167,30 @@ def poll_air_and_notify():
         avg_aqi = int(sum(area_aqis_vals) / len(area_aqis_vals))
         print("Average AQI for {}: {}".format(area_name, avg_aqi))
         # TODO 2020-09-15: DRY - Refactor this copy-pasta
-        if avg_aqi < GOOD_AQI:
-            now_timestamp = int(time.time())
-            try:
-                last_notified = int(redis_client.get('{}:last-notified-good'.format(area_name)))
-            except (TypeError, ValueError):
-                last_notified = None
-            if not last_notified or last_notified < now_timestamp - NOTIFICATION_INTERVAL_S:
-                purple_link = area['link'].format(sensor_id)
-                success_str = "AQI at {} is now {} 💚 (US EPA)! Green means GOOOO 🟢 \n{}\n{}".format(
-                    area_name, avg_aqi, '\n'.join(['{}: {}'.format(name, val) for name, val in area_aqis.items()]),
-                    purple_link)
-                print(success_str)
-                last_notified_dt = datetime.datetime.fromtimestamp(now_timestamp)
-                redis_client.set('{}:last-notified-good'.format(area_name), now_timestamp)
-                print("Updated last notified to {}".format(last_notified_dt.isoformat(sep=' ')))
-                for number in notify_numbers:
-                    print("Sending text to {}".format(number))
-                    send_runair_sms(number, body=success_str)
-            else:
-                last_notified_dt = datetime.datetime.fromtimestamp(last_notified)
-                print("Not notifiying for {} because we last notified at {}".format(
-                    area_name, last_notified_dt.isoformat(sep=' ')))
-        elif avg_aqi < ACCEPTABLE_AQI:
-            now_timestamp = int(time.time())
-            try:
-                last_notified = int(redis_client.get('{}:last-notified'.format(area_name)))
-            except (TypeError, ValueError):
-                last_notified = None
-            if not last_notified or last_notified < now_timestamp - NOTIFICATION_INTERVAL_S:
-                purple_link = area['link'].format(sensor_id)
-                success_str = "AQI at {} is now {} 💛 (US EPA)! Please still exercise caution!\n{}\n{}".format(
-                    area_name, avg_aqi, '\n'.join(['{}: {}'.format(name, val) for name, val in area_aqis.items()]),
-                    purple_link)
-                print(success_str)
-                last_notified_dt = datetime.datetime.fromtimestamp(now_timestamp)
-                redis_client.set('{}:last-notified'.format(area_name), now_timestamp)
-                print("Updated last notified to {}".format(last_notified_dt.isoformat(sep=' ')))
-                for number in notify_numbers:
-                    print("Sending text to {}".format(number))
-                    send_runair_sms(number, body=success_str)
-            else:
-                last_notified_dt = datetime.datetime.fromtimestamp(last_notified)
-                print("Not notifiying for {} because we last notified at {}".format(
-                    area_name, last_notified_dt.isoformat(sep=' ')))
+
+        now_timestamp = int(time.time())
+        for alert in ALERTS:
+            if avg_aqi < alert['threshold']:
+                now_timestamp = int(time.time())
+                try:
+                    last_notified = int(redis_client.get('{}:{}'.format(area_name, alert['key'])))
+                except (TypeError, ValueError):
+                    last_notified = None
+                if not last_notified or last_notified < now_timestamp - NOTIFICATION_INTERVAL_S:
+                    purple_link = area['link'].format(sensor_id)
+                    success_str = alert['message'].format(
+                        area_name, avg_aqi, '\n'.join(['{}: {}'.format(name, val) for name, val in area_aqis.items()]),
+                        purple_link)
+                    print(success_str)
+                    last_notified_dt = datetime.datetime.fromtimestamp(now_timestamp)
+                    redis_client.set('{}:{}'.format(area_name, alert['key']), now_timestamp)
+                    print("Updated last notified to {}".format(last_notified_dt.isoformat(sep=' ')))
+                    for number in notify_numbers:
+                        print("Sending text to {}".format(number))
+                        send_runair_sms(number, body=success_str)
+                else:
+                    last_notified_dt = datetime.datetime.fromtimestamp(last_notified)
+                    print("Not notifiying for {} because we last notified at {}".format(
+                        area_name, last_notified_dt.isoformat(sep=' ')))
+                break
         print("\n----\n")
